@@ -41,6 +41,7 @@ class Clock: NSObject, NSCoding {
     }
     var radius: Int?
     var repeatType: RepeatType?
+    var switchStatus: Bool = true
     
     init(time: String, interval: Int, location: Point, radius: Int, repeatType: RepeatType) {
         self.time = time
@@ -75,6 +76,5 @@ class Clock: NSObject, NSCoding {
         self.location = Point(x: x, y: y)
         self.radius = aDecoder.decodeInteger(forKey: "radius")
         self.repeatType = aDecoder.decodeObject(forKey: "repeatType") as! RepeatType
-        
     }
 }

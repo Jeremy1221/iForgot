@@ -15,6 +15,7 @@
 		3F49B4E71E9C9C6F00E3C513 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */; };
 		3F49B4E91E9CA42B00E3C513 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4E81E9CA42B00E3C513 /* Clock.swift */; };
 		3F49B4EB1E9CD9A500E3C513 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */; };
+		3FB36B291E9F13C500AA983F /* AVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB36B281E9F13C500AA983F /* AVViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3F49B4E81E9CA42B00E3C513 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
 		3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3FB36B281E9F13C500AA983F /* AVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3F49B4D41E9C81D000E3C513 /* AppDelegate.swift */,
 				3F49B4D61E9C81D000E3C513 /* ClockViewController.swift */,
+				3FB36B281E9F13C500AA983F /* AVViewController.swift */,
 				3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */,
 				3F49B4E81E9CA42B00E3C513 /* Clock.swift */,
 				3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */,
@@ -107,6 +110,11 @@
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = U4PV22TRLQ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -149,6 +157,7 @@
 				3F49B4E71E9C9C6F00E3C513 /* UIColor+Extension.swift in Sources */,
 				3F49B4D71E9C81D000E3C513 /* ClockViewController.swift in Sources */,
 				3F49B4EB1E9CD9A500E3C513 /* DetailViewController.swift in Sources */,
+				3FB36B291E9F13C500AA983F /* AVViewController.swift in Sources */,
 				3F49B4E91E9CA42B00E3C513 /* Clock.swift in Sources */,
 				3F49B4D51E9C81D000E3C513 /* AppDelegate.swift in Sources */,
 			);
@@ -314,6 +323,7 @@
 				3F49B4E51E9C81D000E3C513 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
