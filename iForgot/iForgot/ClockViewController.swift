@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
 
 class ClockViewController: UITableViewController, CLLocationManagerDelegate {
 
@@ -67,16 +68,19 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         locationManager?.activityType = .otherNavigation                    //活动类型
         locationManager?.desiredAccuracy = kCLLocationAccuracyKilometer     //精确度
         locationManager?.pausesLocationUpdatesAutomatically = true          //自动停止定位服务
-        locationManager?.allowsBackgroundLocationUpdates = true             //后台定位
+        locationManager?.allowsBackgroundLocationUpdates = true             //
 //        self.locationManager?.distanceFilter = 100                          //当距离变化超过这个数值时才会调用didUpdateLocations方法
         if CLLocationManager.locationServicesEnabled() {
-//            self.locationManager?.requestAlwaysAuthorization()             //请求后台定位权限
-            self.locationManager?.requestWhenInUseAuthorization()            //请求前台定位权限
+            self.locationManager?.requestAlwaysAuthorization()             //请求后台定位权限
             self.locationManager?.startUpdatingLocation()                       //开始定位
 //            self.locationManager?.startMonitoringVisits()                       //start monitoring for visits
 //            self.locationManager?.startMonitoringSignificantLocationChanges()   //start signnificant-change location updates
 //            self.locationManager?.allowDeferredLocationUpdates(untilTraveled: 100, timeout: 100) //100m or 100sec call didUpdateLocations
         }
+    }
+    
+    func setLocalNotification() {
+//        let localNotification =
     }
     
     //MARK: - CLLocationManagerDelegate
@@ -111,6 +115,22 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         case .restricted:
             print("restricted")
         }
+    }
+    
+    func sendLocalNotification() {
+        let content = UNMutableNotificationContent()
+        content.badge = 1
+        content.body = "body"
+        content.title = "title"
+        content.launchImageName = "imageName"
+        content.subtitle = "subtitle"
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "local"
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 10, repeats: false)
+        
+        let request = UNNotificationRequest.init(identifier: "message", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     @IBAction func editClock(_ sender: UIBarButtonItem) {
