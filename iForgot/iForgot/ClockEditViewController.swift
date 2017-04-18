@@ -1,15 +1,19 @@
 //
-//  DetailViewController.swift
+//  ClockEditViewController.swift
 //  iForgot
 //
-//  Created by Jeremy on 4/11/17.
+//  Created by Jeremy on 4/17/17.
 //  Copyright © 2017 Jeremy. All rights reserved.
 //
 
 import UIKit
 
-class DetailViewController: UITableViewController {
+class ClockEditViewController: UITableViewController {
 
+    @IBOutlet weak var timeCell: UITableViewCell!
+    @IBOutlet weak var repeatCell: UITableViewCell!
+    @IBOutlet weak var switchCell: UITableViewCell!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,25 +31,38 @@ class DetailViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 3
+//    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            let map = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "map") as! MapViewController
+            self.navigationController?.pushViewController(map, animated: true)
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        switch indexPath.row {
+//        case 0:
+//            return self.timeCell
+//        case 1:
+//            return self.repeatCell
+//        case 2:
+//            return switchCell
+//        default:
+//            return UITableViewCell()
+//        }
+//    }
+// 
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let arr = [169, 47, 47]
+//        return CGFloat(arr[indexPath.row])
+//    }
 
     /*
     // Override to support conditional editing of the table view.

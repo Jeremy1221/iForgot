@@ -9,16 +9,19 @@
 import UIKit
 import CoreLocation
 import UserNotifications
+import MapKit
 
 class ClockViewController: UITableViewController, CLLocationManagerDelegate {
 
     var dataArray = [Clock]()
     var locationManager: CLLocationManager?
+    var tag = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
-        startStandardUpdates()
+//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "clockCell")
+//        startStandardUpdates()
 //        let clock = Clock.init(time: "test", interval: 60, location: Point.init(x: 1, y: 1), radius: 10, repeatType: .once)
 //        let clockData = NSKeyedArchiver.archivedData(withRootObject: clock)
 //        UserDefaults.standard.set(clockData, forKey: "userClockData")
@@ -29,7 +32,7 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: - UITableViewDatasource
+    //MARK: - UITableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -49,7 +52,12 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         return cell
     }
     
-    //MARK: - UITableViewDelegate
+    //MARK: - UITableViewDatasource
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let clockDetail = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "clockEdit") as! ClockEditViewController
+        self.navigationController?.pushViewController(clockDetail, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -79,15 +87,17 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         }
     }
     
-    func setLocalNotification() {
-//        let localNotification =
-    }
-    
     //MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations:%@", locations)
-        print(locations.last?.altitude ?? 0)                //高度
-        print(locations.last?.coordinate ?? 0)              //经纬度
+//        print("didUpdateLocations:%@", locations)
+//        print(locations.last?.altitude ?? 0)                //高度
+//        print(locations.last?.coordinate ?? 0)              //经纬度
+        
+        sendLocalNotification()
+        let delayTime = DispatchTime.now() + .seconds(4)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) { 
+//            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -117,6 +127,26 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         }
     }
     
+    //MARK: - Region Monitoring Method
+    func registerRegion(overlay: MKCircle, and identifier: String) {
+        var radius = overlay.radius
+        if radius > (locationManager?.maximumRegionMonitoringDistance)! {
+            radius = (locationManager?.maximumRegionMonitoringDistance)!
+        }
+        
+        let geoRegion = CLCircularRegion.init(center: overlay.coordinate, radius: radius, identifier: identifier)
+        //121.381782,31.181282
+        locationManager?.startMonitoring(for: geoRegion)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("didenterregion")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("didexitregion")
+    }
+    
     func sendLocalNotification() {
         let content = UNMutableNotificationContent()
         content.badge = 1
@@ -125,12 +155,27 @@ class ClockViewController: UITableViewController, CLLocationManagerDelegate {
         content.launchImageName = "imageName"
         content.subtitle = "subtitle"
         content.sound = UNNotificationSound.default()
-        content.categoryIdentifier = "local"
+        tag += 1
+        content.categoryIdentifier = "someCategory\(tag)"
+        if let imageUrl = Bundle.main.path(forResource: "timg", ofType: "jpeg") {
+            do {
+                let attahment = try? UNNotificationAttachment.init(identifier: "imageAttachment", url: URL.init(fileURLWithPath: imageUrl), options: nil)
+                content.attachments = [attahment!]
+            } catch {
+                
+            }
+            
+            
+//            let attachment = try? UNNotificationAttachment.init(identifier: "imageAttachment", url: imageUrl, options: nil) {
+//                
+//            }
+        }
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 10, repeats: false)
         
         let request = UNNotificationRequest.init(identifier: "message", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        print("sendLocalNotification")
     }
     
     @IBAction func editClock(_ sender: UIBarButtonItem) {

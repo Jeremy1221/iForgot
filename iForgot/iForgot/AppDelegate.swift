@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        UIApplication.shared.statusBarStyle = .lightContent
-        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (ifSuccess, error) in
-            
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+            if granted {
+                self.registerNotificationCategory()
+                UNUserNotificationCenter.current().delegate = NotificationHandler.shared
+            }
         }
         return true
     }
@@ -48,6 +51,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    private func registerNotificationCategory() {
+        let someCategory: UNNotificationCategory = {
+            let inputAction = UNTextInputNotificationAction.init(identifier: "action.input", title: "Input", options: [.foreground], textInputButtonTitle: "send", textInputPlaceholder: "what do you mean")
+            let goodByeAction = UNNotificationAction.init(identifier: "action.goodbye", title: "goodbye", options: [.foreground])
+            let cancelAction = UNNotificationAction.init(identifier: "action.cancel", title: "cancel", options: [.destructive])
+            return UNNotificationCategory.init(identifier: "someCategory", actions: [inputAction, goodByeAction, cancelAction], intentIdentifiers: [], options: [.customDismissAction])
+        }()
+        print("registerNotificationCategory")
+        UNUserNotificationCenter.current().setNotificationCategories([someCategory])
     }
 }
 

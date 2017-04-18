@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F42AECA1EA487F50026FE1C /* ClockEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42AEC91EA487F50026FE1C /* ClockEditViewController.swift */; };
+		3F42AECC1EA489340026FE1C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F42AECB1EA489340026FE1C /* MapViewController.swift */; };
 		3F49B4D51E9C81D000E3C513 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4D41E9C81D000E3C513 /* AppDelegate.swift */; };
 		3F49B4D71E9C81D000E3C513 /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4D61E9C81D000E3C513 /* ClockViewController.swift */; };
 		3F49B4DA1E9C81D000E3C513 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B4D81E9C81D000E3C513 /* Main.storyboard */; };
@@ -14,11 +16,43 @@
 		3F49B4DF1E9C81D000E3C513 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B4DD1E9C81D000E3C513 /* LaunchScreen.storyboard */; };
 		3F49B4E71E9C9C6F00E3C513 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */; };
 		3F49B4E91E9CA42B00E3C513 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4E81E9CA42B00E3C513 /* Clock.swift */; };
-		3F49B4EB1E9CD9A500E3C513 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */; };
+		3F81D03D1EA5DB7000587F5C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F81D03C1EA5DB7000587F5C /* MapKit.framework */; };
+		3F81D03F1EA6012100587F5C /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81D03E1EA6012100587F5C /* CustomAnnotation.swift */; };
+		3F81D0411EA6053000587F5C /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F81D0401EA6053000587F5C /* CustomAnnotationView.swift */; };
 		3FB36B291E9F13C500AA983F /* AVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB36B281E9F13C500AA983F /* AVViewController.swift */; };
+		3FCFCF151EA0C3A100CD78D3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFCF141EA0C3A100CD78D3 /* NotificationHandler.swift */; };
+		3FCFCF1D1EA0CF0200CD78D3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCFCF1C1EA0CF0200CD78D3 /* NotificationService.swift */; };
+		3FCFCF211EA0CF0200CD78D3 /* UserNotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3FCFCF1A1EA0CF0200CD78D3 /* UserNotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3FCFCF271EA0D0B300CD78D3 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3FCFCF261EA0D0B300CD78D3 /* timg.jpeg */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3FCFCF1F1EA0CF0200CD78D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F49B4C91E9C81D000E3C513 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FCFCF191EA0CF0200CD78D3;
+			remoteInfo = UserNotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3FCFCF251EA0CF0200CD78D3 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3FCFCF211EA0CF0200CD78D3 /* UserNotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3F42AEC91EA487F50026FE1C /* ClockEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockEditViewController.swift; sourceTree = "<group>"; };
+		3F42AECB1EA489340026FE1C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3F49B4D11E9C81D000E3C513 /* iForgot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iForgot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F49B4D41E9C81D000E3C513 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F49B4D61E9C81D000E3C513 /* ClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewController.swift; sourceTree = "<group>"; };
@@ -28,8 +62,15 @@
 		3F49B4E01E9C81D000E3C513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		3F49B4E81E9CA42B00E3C513 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
-		3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3F81D03C1EA5DB7000587F5C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3F81D03E1EA6012100587F5C /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		3F81D0401EA6053000587F5C /* CustomAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		3FB36B281E9F13C500AA983F /* AVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVViewController.swift; sourceTree = "<group>"; };
+		3FCFCF141EA0C3A100CD78D3 /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		3FCFCF1A1EA0CF0200CD78D3 /* UserNotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UserNotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FCFCF1C1EA0CF0200CD78D3 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		3FCFCF1E1EA0CF0200CD78D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FCFCF261EA0D0B300CD78D3 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +81,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3FCFCF171EA0CF0200CD78D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F81D03D1EA5DB7000587F5C /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -47,7 +96,9 @@
 			isa = PBXGroup;
 			children = (
 				3F49B4D31E9C81D000E3C513 /* iForgot */,
+				3FCFCF1B1EA0CF0200CD78D3 /* UserNotificationService */,
 				3F49B4D21E9C81D000E3C513 /* Products */,
+				3F81D03B1EA5DB7000587F5C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				3F49B4D11E9C81D000E3C513 /* iForgot.app */,
+				3FCFCF1A1EA0CF0200CD78D3 /* UserNotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,9 +116,14 @@
 			children = (
 				3F49B4D41E9C81D000E3C513 /* AppDelegate.swift */,
 				3F49B4D61E9C81D000E3C513 /* ClockViewController.swift */,
+				3F42AEC91EA487F50026FE1C /* ClockEditViewController.swift */,
+				3F42AECB1EA489340026FE1C /* MapViewController.swift */,
+				3F81D03E1EA6012100587F5C /* CustomAnnotation.swift */,
+				3F81D0401EA6053000587F5C /* CustomAnnotationView.swift */,
+				3FCFCF141EA0C3A100CD78D3 /* NotificationHandler.swift */,
 				3FB36B281E9F13C500AA983F /* AVViewController.swift */,
-				3F49B4EA1E9CD9A500E3C513 /* DetailViewController.swift */,
 				3F49B4E81E9CA42B00E3C513 /* Clock.swift */,
+				3FCFCF261EA0D0B300CD78D3 /* timg.jpeg */,
 				3F49B4E61E9C9C6F00E3C513 /* UIColor+Extension.swift */,
 				3F49B4D81E9C81D000E3C513 /* Main.storyboard */,
 				3F49B4DB1E9C81D000E3C513 /* Assets.xcassets */,
@@ -74,6 +131,23 @@
 				3F49B4E01E9C81D000E3C513 /* Info.plist */,
 			);
 			path = iForgot;
+			sourceTree = "<group>";
+		};
+		3F81D03B1EA5DB7000587F5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F81D03C1EA5DB7000587F5C /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3FCFCF1B1EA0CF0200CD78D3 /* UserNotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				3FCFCF1C1EA0CF0200CD78D3 /* NotificationService.swift */,
+				3FCFCF1E1EA0CF0200CD78D3 /* Info.plist */,
+			);
+			path = UserNotificationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,15 +160,34 @@
 				3F49B4CD1E9C81D000E3C513 /* Sources */,
 				3F49B4CE1E9C81D000E3C513 /* Frameworks */,
 				3F49B4CF1E9C81D000E3C513 /* Resources */,
+				3FCFCF251EA0CF0200CD78D3 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3FCFCF201EA0CF0200CD78D3 /* PBXTargetDependency */,
 			);
 			name = iForgot;
 			productName = iForgot;
 			productReference = 3F49B4D11E9C81D000E3C513 /* iForgot.app */;
 			productType = "com.apple.product-type.application";
+		};
+		3FCFCF191EA0CF0200CD78D3 /* UserNotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FCFCF221EA0CF0200CD78D3 /* Build configuration list for PBXNativeTarget "UserNotificationService" */;
+			buildPhases = (
+				3FCFCF161EA0CF0200CD78D3 /* Sources */,
+				3FCFCF171EA0CF0200CD78D3 /* Frameworks */,
+				3FCFCF181EA0CF0200CD78D3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UserNotificationService;
+			productName = UserNotificationService;
+			productReference = 3FCFCF1A1EA0CF0200CD78D3 /* UserNotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -116,6 +209,16 @@
 							};
 						};
 					};
+					3FCFCF191EA0CF0200CD78D3 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = U4PV22TRLQ;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 3F49B4CC1E9C81D000E3C513 /* Build configuration list for PBXProject "iForgot" */;
@@ -132,6 +235,7 @@
 			projectRoot = "";
 			targets = (
 				3F49B4D01E9C81D000E3C513 /* iForgot */,
+				3FCFCF191EA0CF0200CD78D3 /* UserNotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -143,7 +247,15 @@
 			files = (
 				3F49B4DF1E9C81D000E3C513 /* LaunchScreen.storyboard in Resources */,
 				3F49B4DC1E9C81D000E3C513 /* Assets.xcassets in Resources */,
+				3FCFCF271EA0D0B300CD78D3 /* timg.jpeg in Resources */,
 				3F49B4DA1E9C81D000E3C513 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FCFCF181EA0CF0200CD78D3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,15 +267,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F49B4E71E9C9C6F00E3C513 /* UIColor+Extension.swift in Sources */,
+				3F42AECA1EA487F50026FE1C /* ClockEditViewController.swift in Sources */,
+				3F81D03F1EA6012100587F5C /* CustomAnnotation.swift in Sources */,
 				3F49B4D71E9C81D000E3C513 /* ClockViewController.swift in Sources */,
-				3F49B4EB1E9CD9A500E3C513 /* DetailViewController.swift in Sources */,
+				3FCFCF151EA0C3A100CD78D3 /* NotificationHandler.swift in Sources */,
 				3FB36B291E9F13C500AA983F /* AVViewController.swift in Sources */,
+				3F81D0411EA6053000587F5C /* CustomAnnotationView.swift in Sources */,
 				3F49B4E91E9CA42B00E3C513 /* Clock.swift in Sources */,
 				3F49B4D51E9C81D000E3C513 /* AppDelegate.swift in Sources */,
+				3F42AECC1EA489340026FE1C /* MapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FCFCF161EA0CF0200CD78D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FCFCF1D1EA0CF0200CD78D3 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FCFCF201EA0CF0200CD78D3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FCFCF191EA0CF0200CD78D3 /* UserNotificationService */;
+			targetProxy = 3FCFCF1F1EA0CF0200CD78D3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F49B4D81E9C81D000E3C513 /* Main.storyboard */ = {
@@ -281,6 +413,7 @@
 		3F49B4E41E9C81D000E3C513 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U4PV22TRLQ;
 				INFOPLIST_FILE = iForgot/Info.plist;
@@ -294,12 +427,39 @@
 		3F49B4E51E9C81D000E3C513 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U4PV22TRLQ;
 				INFOPLIST_FILE = iForgot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.iForgot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		3FCFCF231EA0CF0200CD78D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = U4PV22TRLQ;
+				INFOPLIST_FILE = UserNotificationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.iForgot.UserNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3FCFCF241EA0CF0200CD78D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = U4PV22TRLQ;
+				INFOPLIST_FILE = UserNotificationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexander.iForgot.UserNotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -321,6 +481,15 @@
 			buildConfigurations = (
 				3F49B4E41E9C81D000E3C513 /* Debug */,
 				3F49B4E51E9C81D000E3C513 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FCFCF221EA0CF0200CD78D3 /* Build configuration list for PBXNativeTarget "UserNotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FCFCF231EA0CF0200CD78D3 /* Debug */,
+				3FCFCF241EA0CF0200CD78D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
