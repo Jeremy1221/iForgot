@@ -13,8 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     var isFirst = true
-//    var annotation = MKPointAnnotation()
-//    var annotationView = MKPinAnnotationView()
+    var annotation = MKPointAnnotation()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isTranslucent = true
@@ -49,8 +48,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if isFirst {
             mapView.setCenter(mapView.userLocation.coordinate, animated: true)
             mapView.region = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.001))
+            annotation.coordinate = mapView.userLocation.coordinate
+            mapView.addAnnotation(annotation)
         }
         isFirst = false
+        
         
 //        mapView.showsUserLocation = false
 //        let annomaiton = MKPointAnnotation.init()
@@ -63,25 +65,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 //        mapView.region = MKCoordinateRegion.init(center: mapView.userLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.01, longitudeDelta: 0.001))
     }
     
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        print("select")
-//    }
-//    
-//    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-//        print("deselect")
-//    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("select")
+        mapView.selectedAnnotations = [annotation]
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        mapView.selectedAnnotations = [annotation]
+    }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        return MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: "userlocationview")
         if annotation.isKind(of: MKUserLocation.self) {
-            return nil//MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userlocationview")
+            self.annotation.title = annotation.title!
+            self.annotation.subtitle = annotation.subtitle!
+            return nil              //MKAnnotationView.init(annotation: annotation, reuseIdentifier: "userlocationview")
         } else {
-//            annotationView.annotation = annotation
             var annotationView = MKPinAnnotationView.init(annotation: annotation, reuseIdentifier: "annotationView")
             annotationView.canShowCallout = true
-//            print(annotation.title)
-//            print(annotation.subtitle)
-//            print(annotation.coordinate)
             return annotationView
         }
     }
@@ -98,10 +98,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if (error != nil) {
                 print(error)
             } else {
-//                print("\(placeMarks?.first?.country)---\(placeMarks?.first?.areasOfInterest)---\(placeMarks?.first?.name)")
-//                print(placeMarks?.first?.subLocality)
-//                print(placeMarks?.first?.name)
-//                print(placeMarks?.first?.addressDictionary)
                 city = (placeMarks?.first?.name)!
                 street = (placeMarks?.first?.subLocality)!
             }
@@ -109,7 +105,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         return (city, street) as! (String, String)
         geocoder.geocodeAddressString("") { (placeMarks, error) in
-//            CLPlacemark
+            
         }
     }
     
@@ -117,30 +113,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let point = tap.location(in: mapView)
         let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
         
-        mapView.removeAnnotations(mapView.annotations)
-        var annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
-//        let tuples = geocodeLocation(location: CLLocation.init(latitude: coordinate.latitude, longitude: coordinate.longitude), for: nil)
+        
         let location =
         CLGeocoder().reverseGeocodeLocation(CLLocation.init(latitude: coordinate.latitude, longitude: coordinate.longitude)) { (placeMarks, error) in
             if (error != nil) {
                 print(error)
             } else {
-                //                print("\(placeMarks?.first?.country)---\(placeMarks?.first?.areasOfInterest)---\(placeMarks?.first?.name)")
-                //                print(placeMarks?.first?.subLocality)
-                //                print(placeMarks?.first?.name)
-                //                print(placeMarks?.first?.addressDictionary)
-                annotation.title = placeMarks?.first?.name
-                annotation.subtitle = placeMarks?.first?.subLocality
-//                print(annotation.title)
-//                print(annotation.subtitle)
+//                print("\(placeMarks?.first?.country)---\(placeMarks?.first?.areasOfInterest)---\(placeMarks?.first?.name)")
+//                print(placeMarks?.first?.subLocality)
+//                print(placeMarks?.first?.name)
+//                print(placeMarks?.first?.addressDictionary)
+                self.annotation.title = placeMarks?.first?.name
+                self.annotation.subtitle = placeMarks?.first?.subLocality
             }
         }
-//        annotation.title = tuples?.0
-//        annotation.subtitle = tuples?.1
-//        print(tuples)
-        mapView.addAnnotation(annotation)
-//        self.mapView.selectAnnotation(annotation, animated: true)
     }
     /*
     // MARK: - Navigation
